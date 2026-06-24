@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# lintoys.sh — Herramientas del sistema para Linux
-# Uso: bash lintoys.sh   (algunas opciones requieren sudo)
+# linchanges.sh — Herramientas del sistema para Linux
+# Uso: bash linchanges.sh   (algunas opciones requieren sudo)
 
 # ── Colores ───────────────────────────────────────────────────────────────────
 R='\033[0;31m' G='\033[0;32m' Y='\033[1;33m'
@@ -104,7 +104,7 @@ banner() {
     clear
     e ""
     e "${C}  ┌────────────────────────────────────────────────────────┐${RESET}"
-    e "${C}  │   L I N T O Y S  v1.0  —  Herramientas del sistema   │${RESET}"
+    e "${C}  │   L I N C H A N G E S  v1.0  —  Herramientas del sistema   │${RESET}"
     e "${C}  └────────────────────────────────────────────────────────┘${RESET}"
     if is_root; then
         e "${G}  [root] — acceso completo${RESET}"

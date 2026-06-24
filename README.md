@@ -1,4 +1,4 @@
-# LinToys
+# LinChanges
 
 TUI de administración del sistema Linux en Bash — sin dependencias externas, compatible con las principales distros.
 
@@ -19,10 +19,10 @@ TUI de administración del sistema Linux en Bash — sin dependencias externas, 
 
 ```bash
 # Sin root (secciones de solo lectura disponibles)
-bash lintoys.sh
+bash linchanges.sh
 
 # Con root completo
-sudo bash lintoys.sh
+sudo bash linchanges.sh
 ```
 
 ## Secciones
