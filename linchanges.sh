@@ -604,6 +604,9 @@ show_apps() {
                 need_root || continue
                 printf "\n  ${C}Nombre del paquete: ${RESET}"; read -r pkg_name
                 [[ -z "$pkg_name" ]] && continue
+                if ! [[ "$pkg_name" =~ ^[a-zA-Z0-9_.+\-]+$ ]]; then
+                    e "\n${Y}  [!] Nombre de paquete inválido.${RESET}"; pause; continue
+                fi
                 e ""
                 case $PKG in
                     apt)    apt_locked || apt-get install -y "$pkg_name" ;;
@@ -617,6 +620,9 @@ show_apps() {
                 need_root || continue
                 printf "\n  ${C}Nombre del paquete a eliminar: ${RESET}"; read -r pkg_name
                 [[ -z "$pkg_name" ]] && continue
+                if ! [[ "$pkg_name" =~ ^[a-zA-Z0-9_.+\-]+$ ]]; then
+                    e "\n${Y}  [!] Nombre de paquete inválido.${RESET}"; pause; continue
+                fi
                 e ""
                 case $PKG in
                     apt)    apt_locked || apt-get remove --purge -y "$pkg_name" ;;
@@ -780,6 +786,9 @@ show_network() {
                 need_root || continue
                 printf "\n  ${C}Interfaz (ej: eth0, ens3, wlan0): ${RESET}"; read -r iface
                 if [[ -n $iface ]]; then
+                    if [[ ! -e "/sys/class/net/$iface" ]]; then
+                        e "\n${Y}  [!] Interfaz '$iface' no encontrada.${RESET}"; pause; continue
+                    fi
                     ip link set "$iface" down 2>/dev/null
                     ip link set "$iface" up   2>/dev/null
                     dhclient "$iface" 2>/dev/null || dhcpcd "$iface" 2>/dev/null || true
